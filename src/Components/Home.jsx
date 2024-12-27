@@ -1,12 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContex } from "../Utils/Contex";
 import Loading from "./Loading";
 const Home = () => {
   const [products] = useContext(ProductContex);
-  console.log("All data", products);
+  // console.log("All data", products);
+  const {search} = useLocation();
+  const particularcategory = decodeURIComponent(search.split('=')[1]);
+  console.log(particularcategory);
+  
   return products ? (
     <>
       <Navbar />

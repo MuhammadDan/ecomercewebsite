@@ -6,7 +6,7 @@ const Navbar = () => {
   let distinct_category = products && products.reduce((acc,currentval)=>[...acc,currentval.category],[])
   // console.log("specific category",distinct_category);
   distinct_category = [...new Set(distinct_category)]
-  console.log("ALL different category",distinct_category);
+  // console.log("ALL different category",distinct_category);
   
   const color = () =>{
     return `rgba(${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},0.5)`
