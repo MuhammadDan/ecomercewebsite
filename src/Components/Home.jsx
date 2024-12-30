@@ -8,26 +8,26 @@ import axios from "../Utils/Axios";
 
 const Home = () => {
   const [products] = useContext(ProductContex);
-  console.log("All data", products);
+  // console.log("All data", products);
   const {search} = useLocation();
   const particularcategory = decodeURIComponent(search.split('=')[1]);
-  console.log(particularcategory);
+  // console.log(particularcategory);
   
   const [filterproducts, setfilterproducts] = useState(null);
-  const getsinglecategoryproducts = async () =>{
-    try {
-      const {data} = await axios.get(`/products/category/${particularcategory}`);
-      console.log("filter category content",data);
-      setfilterproducts(data);
-    } catch (error) {
-      console.log(error);
+  // const getsinglecategoryproducts = async () =>{
+  //   try {
+  //     const {data} = await axios.get(`/products/category/${particularcategory}`);
+  //     console.log("filter category content",data);
+  //     setfilterproducts(data);
+  //   } catch (error) {
+  //     console.log(error);
       
-    }
-  }
+  //   }
+  // }
   
   useEffect(() => {
     if(!filterproducts || particularcategory=='undefined') setfilterproducts(products);
-    if (particularcategory != "undefined") getsinglecategoryproducts();
+    if (particularcategory != "undefined") setfilterproducts(products.filter((p)=>p.category == particularcategory));
   }, [particularcategory,products]); 
   
   return products ? (
